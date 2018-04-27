@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -11,12 +12,14 @@ namespace ConsoleApplication7
 {
     class IMDBScraper
     {
-    
-        public string Title { get;set; } = "";
-        public string Year { get; set; } = "";
-        public string RunningTime { get; set;}
-        public string IMDBRatings { get; set;}
-        public string ContentRating { get; set; }
+
+        string _url;
+        public string Title { get; private set; } = "";
+        public string IMDBID { get; private set; }
+        public string Year { get; private set; } = "";
+        public string RunningTime { get; private set;}
+        public string IMDBRatings { get; private set;}
+        public string ContentRating { get; private set; }
         public string Director { get; private set; } = "";
         public List<string> Writers { get; private set; } 
         public List<string> Stars { get; private set; }
@@ -39,6 +42,7 @@ namespace ConsoleApplication7
                 Stars = new List<string>();
                 Countries = new List<string>();
                 BoxOffice = new Dictionary<string, string>();
+                _url = url;
                 var doc = Gethtml(url);
                 if (doc.Text.Contains(@"content=""video.movie"""))
                     ParseHtml(doc);
@@ -48,6 +52,10 @@ namespace ConsoleApplication7
 
         void ParseHtml(HtmlDocument doc)
         {
+            //IMDB Id
+            var reg = new Regex("/(tt[0-9]{7})/");
+            var match = reg.Match(_url);
+            IMDBID = match.Value.Replace("/", "");
             //Title
             Title = WebUtility.HtmlDecode(doc.DocumentNode.SelectNodes("//h1[@itemprop='name']")[0].ChildNodes[0].InnerText);
             Title = Title.TrimEnd();
