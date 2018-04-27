@@ -13,11 +13,21 @@ information being scraped
 ```
         Title
         Year
+        RunningTime
+        IMDBRatings
+        ContentRating
         Director
-        Writers
-        Stars 
-        Genres 
-        Cast 
+        [Writers]
+        [Stars] 
+        [Genres] 
+        [Cast]
+        [Countries]
+        [BoxOffice]
+             -Budget
+             -Opening Weekend
+             -Gross USA
+             -Cumulative Worldwide Gross
+        
         Summary 
         StoryLine 
 ```
