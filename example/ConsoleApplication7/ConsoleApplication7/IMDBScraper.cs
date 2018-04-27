@@ -83,7 +83,6 @@ namespace ConsoleApplication7
             var StoryLines = doc.DocumentNode.SelectNodes("//h2[.='Storyline']")[0].ParentNode;
             if (!(StoryLines.InnerHtml.Contains("Add Full Plot")))
                 StoryLine = WebUtility.HtmlDecode(StoryLines.ChildNodes[5].ChildNodes[1].ChildNodes[0].InnerText.Trim());
-
             //Budget
             var tmpBudget = doc.DocumentNode.SelectNodes("//h4[.='Budget:']");               
             if (tmpBudget != null)
@@ -121,7 +120,6 @@ namespace ConsoleApplication7
             if (tmpWriters != null)
                 foreach (var writer in tmpWriters)
                     Writers.Add(writer.ChildNodes[1].InnerText);
-
             //Year Release
             var tmpYear = doc.DocumentNode.SelectNodes("//span[@id='titleYear']");
             if (tmpYear != null)
@@ -141,7 +139,6 @@ namespace ConsoleApplication7
             if (Actors != null)
                 foreach (var actor in Actors)
                     Cast.Add(actor.ChildNodes[1].ChildNodes[1].InnerText);
-
             //Country
             var tmpCountry = doc.DocumentNode.SelectNodes("//h4[.='Country:']");
             if (tmpCountry != null)
@@ -151,8 +148,6 @@ namespace ConsoleApplication7
                         var Country = WebUtility.HtmlDecode(c.ChildNodes[0].InnerText.Trim());
                         Countries.Add(Country);
                     }
-
-
         }      
         HtmlDocument Gethtml(string url)
         {
