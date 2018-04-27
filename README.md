@@ -9,7 +9,7 @@ Newtonsoft json
 
 HtmlAgilityPack
 
-1) pass URL into the constructor and call jsonResults propertie to recieve JsonString
+1) pass URL into the constructor and call jsonResults property to recieve JsonString
 ```
 namespace ConsoleApplication
 {
