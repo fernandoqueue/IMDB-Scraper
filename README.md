@@ -12,6 +12,7 @@ HtmlAgilityPack
 information being scraped
 ```
         Title
+        IMDB ID
         Year
         RunningTime
         IMDBRatings
