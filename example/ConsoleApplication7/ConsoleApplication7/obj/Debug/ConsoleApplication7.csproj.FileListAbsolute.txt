@@ -9,3 +9,6 @@ C:\Users\h\Desktop\project\ConsoleApplication7\ConsoleApplication7\obj\Debug\Con
 C:\Users\h\Desktop\project\ConsoleApplication7\ConsoleApplication7\obj\Debug\ConsoleApplication7.pdb
 C:\Users\h\Desktop\project\ConsoleApplication7\ConsoleApplication7\bin\Debug\Newtonsoft.Json.dll
 C:\Users\h\Desktop\project\ConsoleApplication7\ConsoleApplication7\bin\Debug\Newtonsoft.Json.xml
+C:\Users\h\Desktop\IMDB Scraper\example\ConsoleApplication7\ConsoleApplication7\bin\Debug\ConsoleApplication7.exe.config
+C:\Users\h\Desktop\IMDB Scraper\example\ConsoleApplication7\ConsoleApplication7\obj\Debug\ConsoleApplication7.exe
+C:\Users\h\Desktop\IMDB Scraper\example\ConsoleApplication7\ConsoleApplication7\obj\Debug\ConsoleApplication7.pdb

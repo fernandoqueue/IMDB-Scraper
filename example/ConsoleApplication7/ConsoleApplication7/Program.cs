@@ -23,7 +23,7 @@ namespace ConsoleApplication7
                 int userInput = Int32.Parse(Console.ReadLine());
                 string url = urlToPass[userInput];   
                 //send URL to the constructor and get the results calling the jsonResults property    
-                var jsonResults = new IMBDScraper(url).jsonResults;
+                var jsonResults = new IMDBScraper(url).jsonResults;
                 Console.WriteLine(jsonResults);
                 Console.WriteLine();
             } while (true);

@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace ConsoleApplication7
 {
-    class IMBDScraper
+    class IMDBScraper
     {
         string Title { get;  set; }
        string Year_Release { get;  set; } = "";
@@ -20,7 +20,7 @@ namespace ConsoleApplication7
 
         public string jsonResults{get { return _jsonResults; } }
 
-        public IMBDScraper(string url)
+        public IMDBScraper(string url)
         {
             if (url != "")
             {
