@@ -71,43 +71,44 @@ namespace ConsoleApplication
             var tmpRunningTime = doc.DocumentNode.SelectNodes("//time[@itemprop='duration']");
                 if(tmpRunningTime != null)
               RunningTime = WebUtility.HtmlDecode(tmpRunningTime[0].ChildNodes[0].InnerText.Trim());       
-            //Summary and story node
-            var tmpSummary = doc.DocumentNode.SelectNodes("//div[@itemprop='description']");
+            //Summary
+            var tmpSummary = doc.DocumentNode.SelectNodes("//div[@class='summary_text']");
             if (tmpSummary != null)
             {
-                //Summary
-                if (tmpSummary[1] != null)
-                    Summary = WebUtility.HtmlDecode(tmpSummary[1].ChildNodes[1].ChildNodes[0].InnerText.Trim());
-                //story line
-                if (tmpSummary[0] != null)
-                    StoryLine = WebUtility.HtmlDecode(tmpSummary[0].ChildNodes[0].InnerText.Trim());
+                var summaryTrim = WebUtility.HtmlDecode(tmpSummary[0].InnerText.Trim());
+                if (!summaryTrim.Contains("Add a Plot"))
+                Summary = WebUtility.HtmlDecode(tmpSummary[0].InnerText.Trim());
             }
+            //Story Line
+            var StoryLines = doc.DocumentNode.SelectNodes("//h2[.='Storyline']")[0].ParentNode;
+            if (!(StoryLines.InnerHtml.Contains("Add Full Plot")))
+                StoryLine = WebUtility.HtmlDecode(StoryLines.ChildNodes[5].ChildNodes[1].ChildNodes[0].InnerText.Trim());
             //Budget
-            var tmpBudget = doc.DocumentNode.SelectNodes("//h4[.='Budget:']")[0].ParentNode;
+            var tmpBudget = doc.DocumentNode.SelectNodes("//h4[.='Budget:']");               
             if (tmpBudget != null)
             {
-                var Budget = WebUtility.HtmlDecode(tmpBudget.ChildNodes[2].InnerText.Trim());
+                var Budget = WebUtility.HtmlDecode(tmpBudget[0].ParentNode.ChildNodes[2].InnerText.Trim());
                 BoxOffice.Add("Budget", Budget);
             }
             //Opening Weekend
-            var tmpOpeningWeekend = doc.DocumentNode.SelectNodes("//h4[.='Opening Weekend USA:']")[0].ParentNode;
+            var tmpOpeningWeekend = doc.DocumentNode.SelectNodes("//h4[.='Opening Weekend USA:']");
             if (tmpOpeningWeekend != null)
             {
-                var openingWeekend = WebUtility.HtmlDecode(tmpOpeningWeekend.ChildNodes[2].InnerText.Trim());
+                var openingWeekend = WebUtility.HtmlDecode(tmpOpeningWeekend[0].ParentNode.ChildNodes[2].InnerText.Trim());
                 BoxOffice.Add("Opening Weekend USA", openingWeekend);
             }
             //Gross USA
-            var tmpGross = doc.DocumentNode.SelectNodes("//h4[.='Gross USA:']")[0].ParentNode;
+            var tmpGross = doc.DocumentNode.SelectNodes("//h4[.='Gross USA:']");
             if (tmpGross != null)
             {
-                var grossusa = WebUtility.HtmlDecode(tmpGross.ChildNodes[2].InnerText.Trim());
+                var grossusa = WebUtility.HtmlDecode(tmpGross[0].ParentNode.ChildNodes[2].InnerText.Trim());
                 BoxOffice.Add("Gross USA", grossusa);
             }
             //cumulitive gross
-            var tmpcumuGross = doc.DocumentNode.SelectNodes("//h4[.='Cumulative Worldwide Gross:']")[0].ParentNode;
+            var tmpcumuGross = doc.DocumentNode.SelectNodes("//h4[.='Cumulative Worldwide Gross:']");
             if (tmpcumuGross != null)
             {
-                var cumuGross = WebUtility.HtmlDecode(tmpcumuGross.ChildNodes[2].InnerText.Trim());
+                var cumuGross = WebUtility.HtmlDecode(tmpcumuGross[0].ParentNode.ChildNodes[2].InnerText.Trim());
                 BoxOffice.Add("Cumulative Worldwide Gross", cumuGross);
             }
             //Director
@@ -119,7 +120,6 @@ namespace ConsoleApplication
             if (tmpWriters != null)
                 foreach (var writer in tmpWriters)
                     Writers.Add(writer.ChildNodes[1].InnerText);
-
             //Year Release
             var tmpYear = doc.DocumentNode.SelectNodes("//span[@id='titleYear']");
             if (tmpYear != null)
@@ -139,18 +139,15 @@ namespace ConsoleApplication
             if (Actors != null)
                 foreach (var actor in Actors)
                     Cast.Add(actor.ChildNodes[1].ChildNodes[1].InnerText);
-
             //Country
-            var tmpCountry = doc.DocumentNode.SelectNodes("//h4[.='Country:']")[0].ParentNode;
+            var tmpCountry = doc.DocumentNode.SelectNodes("//h4[.='Country:']");
             if (tmpCountry != null)
-                foreach (var c in tmpCountry.ChildNodes)
+                foreach (var c in tmpCountry[0].ParentNode.ChildNodes)
                     if (c.Name == "a")
                     {
                         var Country = WebUtility.HtmlDecode(c.ChildNodes[0].InnerText.Trim());
                         Countries.Add(Country);
                     }
-
-
         }      
         HtmlDocument Gethtml(string url)
         {
