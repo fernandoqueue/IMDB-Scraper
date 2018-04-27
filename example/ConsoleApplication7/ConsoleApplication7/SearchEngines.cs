@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication7
 {
-    //TODO: Rewrite search engine so it return 1 filtered node not containing illegal url. find common node and use regex to filter results;
     class SearchEngines
     {
         public static Dictionary<int,string> UseGoogle(string searchterm)
