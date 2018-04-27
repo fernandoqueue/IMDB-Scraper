@@ -20,7 +20,7 @@ namespace ConsoleApplication7
 
         public string jsonResults{get { return _jsonResults; } }
 
-        public IMBDScraper(string url)
+        public IMDBScraper(string url)
         {
             if (url != "")
             {
