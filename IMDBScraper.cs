@@ -27,7 +27,7 @@ namespace ConsoleApplication
         public string Summary { get; private set; } = "";
         public string StoryLine { get; private set; } = "";
 
-        public string jsonResults() { return JsonConvert.SerializeObject(this);  }
+        public string jsonResults() => JsonConvert.SerializeObject(this);
 
         public IMDBScraper(string url)
         {
