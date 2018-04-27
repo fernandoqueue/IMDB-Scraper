@@ -12,10 +12,10 @@ namespace ConsoleApplication
     class IMDBScraper
     {
     
-        public string Title { get;set; } = "";
-        public string Year { get; set; } = "";
-        public string RunningTime { get; set;}
-        public string IMDBRatings { get; set;}
+        public string Title { get;private set; } = "";
+        public string Year { get; private set; } = "";
+        public string RunningTime { get; private set;}
+        public string IMDBRatings { get; private set;}
         public string ContentRating { get; set; }
         public string Director { get; private set; } = "";
         public List<string> Writers { get; private set; } 
@@ -27,7 +27,7 @@ namespace ConsoleApplication
         public string Summary { get; private set; } = "";
         public string StoryLine { get; private set; } = "";
 
-        public string jsonResults() { return JsonConvert.SerializeObject(this);  }
+        public string jsonResults() => JsonConvert.SerializeObject(this);
 
         public IMDBScraper(string url)
         {
