@@ -30,6 +30,6 @@ This scraper only supports movie information. TV shows have a different layout s
 
 TODO: 
 
-1) Add the rest of the movie information(ratins,credits,synopsis, etc..)
+1)Add the rest of the movie information(ratins,credits,synopsis, etc..)
 
 2)Add TV show support.
