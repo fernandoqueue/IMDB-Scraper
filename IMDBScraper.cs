@@ -20,7 +20,7 @@ namespace ConsoleApplication7
 
         public string jsonResults{get { return _jsonResults; } }
 
-        public IMBDScraper(string url)
+        public IMDBScraper(string url)
         {
             if (url != "")
             {
@@ -40,7 +40,7 @@ namespace ConsoleApplication7
             Title = Title.TrimEnd();
           
             //Year Release
-            var tmpyr = doc.DocumentNode.SelectNodes("//span[@id='titleYear']");
+             var tmpyr = doc.DocumentNode.SelectNodes("//span[@id='titleYear']");
             if (tmpyr != null)
                 Year_Release = tmpyr[0].ChildNodes[1].InnerText;
 
